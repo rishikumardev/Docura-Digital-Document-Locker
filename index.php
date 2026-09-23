@@ -58,9 +58,9 @@ $csrf = $_SESSION['csrf'];
 
         <div class="sidebar-bottom">
             <div class="mini-storage">
-                <div class="mini-storage-row"><span>Vault storage</span><b id="miniStoragePct">0%</b></div>
+                <div class="mini-storage-row"><span>Docura storage</span><b id="miniStoragePct">0%</b></div>
                 <div class="mini-progress"><i id="miniStorageBar"></i></div>
-                <small id="miniStorageText">0 MB of 2 GB used</small>
+                <small id="miniStorageText">0 MB of 15 GB used</small>
             </div>
             <button class="side-profile" id="sideProfileBtn">
                 <div class="avatar" id="sideAvatar">DU</div>
@@ -83,8 +83,8 @@ $csrf = $_SESSION['csrf'];
                 <div class="notify-wrap">
                     <button class="top-icon" id="notifyBtn">♢<i class="notify-dot"></i></button>
                     <div class="notification-panel" id="notificationPanel">
-                        <div class="notification-head"><div><b>Notifications</b><small>Latest vault updates</small></div><button id="closeNotifications">×</button></div>
-                        <div class="notification-item"><span class="n-dot blue"></span><div><b>Vault protection is active</b><small>Your local workspace is ready.</small></div></div>
+                        <div class="notification-head"><div><b>Notifications</b><small>Latest Docura updates</small></div><button id="closeNotifications">×</button></div>
+                        <div class="notification-item"><span class="n-dot blue"></span><div><b>Docura protection is active</b><small>Your local workspace is ready.</small></div></div>
                         <div class="notification-item"><span class="n-dot green"></span><div><b>Storage monitoring enabled</b><small>Usage is shown on your dashboard.</small></div></div>
                     </div>
                 </div>
@@ -100,10 +100,10 @@ $csrf = $_SESSION['csrf'];
         <section class="page active" id="page-dashboard">
             <div class="hero-banner">
                 <div class="hero-content">
-                    <div class="eyebrow light">PERSONAL DIGITAL VAULT</div>
+                    <div class="eyebrow light">PERSONAL DIGITAL DOCURA</div>
                     <h1>Your documents deserve a <span>beautifully secure</span> home.</h1>
                     <p>Store, organize, preview, download and share important documents from one powerful workspace.</p>
-                    <div class="hero-pills"><span>✓ Private vault</span><span>✓ Smart organization</span><span>✓ Fast access</span></div>
+                    <div class="hero-pills"><span>✓ Private docura</span><span>✓ Smart organization</span><span>✓ Fast access</span></div>
                     <div class="hero-actions">
                         <button class="btn hero-secondary" id="heroFolder">＋ New Folder</button>
                         <button class="btn hero-primary" id="heroUpload">↑ Upload Document</button>
@@ -113,23 +113,23 @@ $csrf = $_SESSION['csrf'];
                     <div class="hero-glow glow-a"></div><div class="hero-glow glow-b"></div>
                     <div class="floating-doc fd1"><span>PDF</span><b>Marksheet</b><small>2.4 MB</small></div>
                     <div class="floating-doc fd2"><span>DOC</span><b>Resume</b><small>780 KB</small></div>
-                    <div class="floating-doc fd3"><span>✓</span><b>Vault Safe</b><small>Protected</small></div>
+                    <div class="floating-doc fd3"><span>✓</span><b>Docura Safe</b><small>Protected</small></div>
                     <div class="hero-shield">◆</div>
                 </div>
             </div>
 
             <div class="stats-grid">
-                <div class="stat-card blue"><div class="stat-icon">▣</div><span>Total Documents</span><strong id="statDocuments">0</strong><small>Stored in your vault</small></div>
+                <div class="stat-card blue"><div class="stat-icon">▣</div><span>Total Documents</span><strong id="statDocuments">0</strong><small>Stored in your docura</small></div>
                 <div class="stat-card purple"><div class="stat-icon">⇄</div><span>Shared Files</span><strong id="statShared">0</strong><small>Active sharing records</small></div>
-                <div class="stat-card cyan"><div class="stat-icon">☁</div><span>Storage Used</span><strong id="statStorage">0 B</strong><small>of 2 GB available</small></div>
-                <div class="stat-card green"><div class="stat-icon">✓</div><span>Vault Health</span><strong>98%</strong><small>Protection checks healthy</small></div>
+                <div class="stat-card cyan"><div class="stat-icon">☁</div><span>Storage Used</span><strong id="statStorage">0 B</strong><small>of 15 GB available</small></div>
+                <div class="stat-card green"><div class="stat-icon">✓</div><span>Docura Health</span><strong>98%</strong><small>Protection checks healthy</small></div>
             </div>
 
             <div class="section-grid two-col">
                 <section class="surface">
                     <div class="surface-head"><div><h2>Recent Documents</h2><small>Latest additions to your locker</small></div><button class="text-link" data-go="documents">View all →</button></div>
                     <div id="recentDocuments"></div>
-                    <div id="recentEmpty" class="empty-state hidden"><div class="empty-icon">▱</div><b>Your vault is ready</b><small>Upload your first document.</small></div>
+                    <div id="recentEmpty" class="empty-state hidden"><div class="empty-icon">▱</div><b>Your docura is ready</b><small>Upload your first document.</small></div>
                 </section>
 
                 <section class="surface">
@@ -141,7 +141,7 @@ $csrf = $_SESSION['csrf'];
                             <div class="bar"><i id="documentsBar"></i></div>
                             <div class="bar-label"><span>Shared</span><b id="sharedStorage">0 B</b></div>
                             <div class="bar"><i id="sharedBar" class="purple"></i></div>
-                            <div class="bar-label"><span>Available</span><b id="freeStorage">2 GB</b></div>
+                            <div class="bar-label"><span>Available</span><b id="freeStorage">13 GB</b></div>
                         </div>
                     </div>
                 </section>
@@ -166,7 +166,7 @@ $csrf = $_SESSION['csrf'];
 
         <!-- DOCUMENTS -->
         <section class="page" id="page-documents">
-            <div class="page-head"><div><div class="eyebrow">YOUR VAULT</div><h1>My Documents</h1><p>Manage files stored in your SQLite-backed vault.</p></div><button class="btn primary" id="documentsUpload">↑ Upload Document</button></div>
+            <div class="page-head"><div><div class="eyebrow">YOUR DOCURA</div><h1>My Documents</h1><p>Manage files stored in your SQLite-backed docura.</p></div><button class="btn primary" id="documentsUpload">↑ Upload Document</button></div>
             <div class="toolbar surface">
                 <div class="filters">
                     <button class="filter active" data-filter="all">All</button><button class="filter" data-filter="pdf">PDF</button><button class="filter" data-filter="doc">Documents</button><button class="filter" data-filter="image">Images</button><button class="filter" data-filter="sheet">Sheets</button>
@@ -281,7 +281,7 @@ $csrf = $_SESSION['csrf'];
         </form>
 
         <form id="signupForm" class="hidden">
-            <h2>Create your account ✨</h2><p>Start your personal document vault.</p>
+            <h2>Create your account ✨</h2><p>Start your personal document docura.</p>
             <label>Full name<input id="signupName" required placeholder="Rishi Kumar"></label>
             <label>Email address<input type="email" id="signupEmail" required placeholder="you@example.com"></label>
             <label>Password<input type="password" id="signupPassword" required minlength="6"></label>
@@ -297,7 +297,7 @@ $csrf = $_SESSION['csrf'];
 <div class="modal" id="uploadModal">
     <div class="modal-shell">
         <button class="modal-close" data-close="uploadModal">×</button>
-        <div class="auth-brand"><div class="brand-icon">↑</div><div><b>Upload Documents</b><small>Store files in the server vault</small></div></div>
+        <div class="auth-brand"><div class="brand-icon">↑</div><div><b>Upload Documents</b><small>Store files in the server docura</small></div></div>
         <div class="drop-zone" id="dropZone">
             <div class="drop-icon">⇧</div><h3>Drop files here</h3><p>or choose documents from your computer</p>
             <input id="fileInput" type="file" multiple hidden>
