@@ -1,0 +1,2 @@
+Docura Full-Stack v1.0
+HTML + CSS + JavaScript + PHP + MySQL

@@ -1,0 +1,6 @@
+database/*.sqlite
+uploads/*
+!uploads/.htaccess
+.vscode/
+.idea/
+*.log
