@@ -6,7 +6,6 @@ if (empty($_SESSION['csrf'])) {
     $_SESSION['csrf'] = bin2hex(random_bytes(32));
 }
 $csrf = $_SESSION['csrf'];
-$showAuthGate = current_user_id() === null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +16,7 @@ $showAuthGate = current_user_id() === null;
     <title>Docura — Secure Digital Document Locker</title>
     <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="<?= $showAuthGate ? 'auth-gate-active' : '' ?>">
+<body>
 <div class="app-shell">
 
     <aside class="sidebar" id="sidebar">
@@ -167,7 +166,7 @@ $showAuthGate = current_user_id() === null;
 
         <!-- DOCUMENTS -->
         <section class="page" id="page-documents">
-            <div class="page-head"><div><div class="eyebrow">YOUR VAULT</div><h1>My Documents</h1><p>Manage files stored in your MySQL-backed vault.</p></div><button class="btn primary" id="documentsUpload">↑ Upload Document</button></div>
+            <div class="page-head"><div><div class="eyebrow">YOUR VAULT</div><h1>My Documents</h1><p>Manage files stored in your SQLite-backed vault.</p></div><button class="btn primary" id="documentsUpload">↑ Upload Document</button></div>
             <div class="toolbar surface">
                 <div class="filters">
                     <button class="filter active" data-filter="all">All</button><button class="filter" data-filter="pdf">PDF</button><button class="filter" data-filter="doc">Documents</button><button class="filter" data-filter="image">Images</button><button class="filter" data-filter="sheet">Sheets</button>
@@ -217,7 +216,7 @@ $showAuthGate = current_user_id() === null;
             <div class="security-grid">
                 <div class="security-card"><div class="security-icon blue">♙</div><span class="security-status">Enabled</span><h3>Authentication</h3><p>Session-based login and account creation are handled on the PHP server.</p></div>
                 <div class="security-card"><div class="security-icon purple">▣</div><span class="security-status">Active</span><h3>Document Access</h3><p>Only the logged-in owner or an approved recipient can access document actions.</p></div>
-                <div class="security-card"><div class="security-icon cyan">◷</div><span class="security-status">Active</span><h3>Activity Logging</h3><p>Uploads, downloads, shares, stars and deletes are written to MySQL.</p></div>
+                <div class="security-card"><div class="security-icon cyan">◷</div><span class="security-status">Active</span><h3>Activity Logging</h3><p>Uploads, downloads, shares, stars and deletes are written to SQLite.</p></div>
                 <div class="security-card"><div class="security-icon green">✓</div><span class="security-status">Active</span><h3>Password Protection</h3><p>User passwords are stored using PHP password hashing instead of plain text.</p></div>
             </div>
         </section>
@@ -268,20 +267,20 @@ $showAuthGate = current_user_id() === null;
 </div>
 
 <!-- AUTH -->
-<div class="modal <?= $showAuthGate ? 'show auth-gate' : '' ?>" id="authModal">
+<div class="modal" id="authModal">
     <div class="modal-shell auth-shell">
-        <button class="modal-close auth-close" data-close="authModal" aria-label="Close">×</button>
+        <button class="modal-close" data-close="authModal">×</button>
         <div class="auth-brand"><div class="brand-icon">D</div><div><b>Docura</b><small>Secure Digital Document Locker</small></div></div>
-        <div class="auth-tabs"><button class="<?= $showAuthGate ? '' : 'active' ?>" data-auth="signin">Sign In</button><button class="<?= $showAuthGate ? 'active' : '' ?>" data-auth="signup">Create Account</button></div>
+        <div class="auth-tabs"><button class="active" data-auth="signin">Sign In</button><button data-auth="signup">Create Account</button></div>
 
-        <form id="signinForm" class="<?= $showAuthGate ? 'hidden' : '' ?>">
+        <form id="signinForm">
             <h2>Welcome back 👋</h2><p>Sign in to access your documents.</p>
             <label>Email address<input type="email" id="loginEmail" required placeholder="you@example.com"></label>
             <label>Password<input type="password" id="loginPassword" required minlength="6" placeholder="At least 6 characters"></label>
             <button class="btn primary wide" type="submit">Sign In →</button>
         </form>
 
-        <form id="signupForm" class="<?= $showAuthGate ? '' : 'hidden' ?>">
+        <form id="signupForm" class="hidden">
             <h2>Create your account ✨</h2><p>Start your personal document vault.</p>
             <label>Full name<input id="signupName" required placeholder="Rishi Kumar"></label>
             <label>Email address<input type="email" id="signupEmail" required placeholder="you@example.com"></label>
@@ -290,7 +289,7 @@ $showAuthGate = current_user_id() === null;
             <label class="check-row"><input type="checkbox" required> I agree to the account terms.</label>
             <button class="btn primary wide" type="submit">Create Account →</button>
         </form>
-        <div class="demo-note">Real accounts are stored in MySQL through the PHP backend.</div>
+        <div class="demo-note">Real accounts are stored securely in SQLite through the PHP backend.</div>
     </div>
 </div>
 
@@ -326,7 +325,7 @@ $showAuthGate = current_user_id() === null;
         <div class="auth-brand"><div class="brand-icon">⇄</div><div><b>Share Document</b><small id="shareDocumentName"></small></div></div>
         <div class="field"><label>Recipient email</label><input type="email" id="shareEmail" placeholder="registered-user@example.com"></div>
         <div class="field"><label>Permission</label><select id="sharePermission"><option value="view">View only</option><option value="download">View & Download</option></select></div>
-        <div class="demo-note">The recipient must already have a Docura account in this version. The share record is stored in MySQL.</div>
+        <div class="demo-note">The recipient must already have a Docura account in this version. The share record is stored in SQLite.</div>
         <div class="modal-footer"><button class="btn" data-close="shareModal">Cancel</button><button class="btn primary" id="createShareBtn">Create Share</button></div>
     </div>
 </div>
